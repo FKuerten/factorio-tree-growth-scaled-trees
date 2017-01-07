@@ -28,7 +28,7 @@ function mutateTree(options, baseName, tree)
 
   -- since saplings can actually be placed we want to place them on the grid
   if isFirst then
-      tree.flags = {"placeable-neutral", "breaths-air"}
+    tree.flags = {"placeable-neutral", "breaths-air"}
   end
 
   -- saplings return the item, intermediate trees return wood, mature trees have seeds
