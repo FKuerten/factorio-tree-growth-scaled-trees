@@ -18,5 +18,5 @@ function createTreeEntityHierarchyForTree(configuration, oldTree)
     createEntityFromTree(optionsTable, oldTree)
   end
 
-  addSeedToMinable(oldTree.name, oldTree.minable)
+  tree_growth.defineTreeUpgrades({}, baseName, oldTree)
 end

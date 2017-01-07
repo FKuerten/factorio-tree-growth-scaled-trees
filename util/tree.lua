@@ -3,15 +3,6 @@ require "tree-growth-lib/registerTree"
 local sqrt = math.sqrt
 local round = function(x) return math.floor(x+0.5) end
 
-function addSeedToMinable(baseName, minable)
-  minable.results = {
-    {type = "item", name=minable.result, amount=minable.count},
-    {type = "item", name=baseName .. "-seed", amount=1},
-  }
-  minable.count = nil
-  minable.result = nil
-end
-
 function mutateTree(options, baseName, tree)
   local suffix = options.suffix or ("-" .. options.id)
   local areaScale = options.areaScale
@@ -41,10 +32,8 @@ function mutateTree(options, baseName, tree)
     }
     tree.corpse = nil
     tree.remains_when_mined = nil
-  elseif not isLast then
-    tree.minable.count = round(tree.minable.count * areaScale)
   else
-    addSeedToMinable(baseName, tree.minable)
+    tree.minable.count = round(tree.minable.count * areaScale)
   end
 
   if areaScale ~= 1 then
