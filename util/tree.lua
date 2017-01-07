@@ -1,4 +1,4 @@
-require "tree-growth-lib/constants"
+require "tree-growth-lib/registerTree"
 
 local sqrt = math.sqrt
 local round = function(x) return math.floor(x+0.5) end
@@ -20,14 +20,6 @@ function mutateTree(options, baseName, tree)
   local isLast = not (options.next and options.next[1])
 
   tree.name = newName
-  -- assign group
-  if isFirst then
-    tree.subgroup = tree_growth.groups.sapling -- todo why is this an item subgroup?
-  elseif not isLast then
-    tree.subgroup = tree_growth.groups.intermediate
-  else
-    tree.subgroup = tree_growth.groups.mature
-  end
 
   -- only mature trees will be autoplaced
   if not isLast then
@@ -71,19 +63,5 @@ function mutateTree(options, baseName, tree)
     end
   end
 
-  if not isLast then
-    local nextTrees = {}
-    for i, data in ipairs(options.next) do
-      assert((data.minDelay and data.maxDelay) or data.delay, "need to specify at minDelay and maxDelay or delay")
-      nextTrees[i] = {
-        name = baseName .. data.suffix,
-        minDelay = data.minDelay or data.delay,
-        maxDelay = data.maxDelay or data.delay,
-        probability = data.probability,
-      }
-    end
-    tree.order = serpent.dump(nextTrees)
-  else
-    tree.order = nil
-  end
+  tree_growth.defineTreeUpgrades(options, baseName, tree)
 end
