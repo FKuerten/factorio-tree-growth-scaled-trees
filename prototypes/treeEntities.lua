@@ -1,10 +1,10 @@
 require "util/entities"
-require "util/tree"
+local mutateTree = require "util/tree"
 require "config"
 
 -- @param options a tree entity option table
 -- @param an old tree
-createEntityFromTree = function(options, oldTree)
+local createEntityFromTree = function(options, oldTree)
   local baseName = oldTree.name
   local newTree = table.deepcopy(oldTree)
   mutateTree(options, baseName, newTree)
@@ -13,10 +13,11 @@ createEntityFromTree = function(options, oldTree)
   return newTree
 end
 
-function createTreeEntityHierarchyForTree(configuration, oldTree)
+local function createTreeEntityHierarchyForTree(configuration, oldTree)
   for _, optionsTable in pairs(configuration) do
     createEntityFromTree(optionsTable, oldTree)
   end
 
   tree_growth.defineTreeUpgrades({}, baseName, oldTree)
 end
+return createTreeEntityHierarchyForTree

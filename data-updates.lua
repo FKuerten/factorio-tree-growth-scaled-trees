@@ -1,7 +1,7 @@
-require "prototypes/treeEntities"
-require "util/saplingItem"
-require "util/particles"
-require "config"
+local createTreeEntityHierarchyForTree = require "prototypes/treeEntities"
+local createSaplingItemFromTree = require "util/saplingItem"
+local createParticles = require "util/particles"
+local configuration = require "config"
 
 -- Create particles for small trees
 for _, optionsTable in pairs(configuration.particles) do

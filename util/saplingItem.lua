@@ -1,7 +1,7 @@
 require "tree-growth-lib/constants"
 require "config"
 
-function createSaplingItemFromTree(tree)
+local createSaplingItemFromTree = function(tree)
   local name = tree.name .. "-sapling"
   local saplingItem = {
     type = "item",
@@ -17,3 +17,5 @@ function createSaplingItemFromTree(tree)
   data:extend({saplingItem})
   return saplingItem
 end
+
+return createSaplingItemFromTree

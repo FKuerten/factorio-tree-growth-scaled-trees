@@ -1,6 +1,6 @@
 require "tree-growth-lib/constants"
 
-configuration = {}
+local configuration = {}
 configuration.particles = {
   {
     id = "tiny",
@@ -64,3 +64,4 @@ configuration.treeEntities = {
     },
   },
 }
+return configuration

@@ -3,7 +3,7 @@ require "tree-growth-lib/registerTree"
 local sqrt = math.sqrt
 local round = function(x) return math.floor(x+0.5) end
 
-function mutateTree(options, baseName, tree)
+local function mutateTree(options, baseName, tree)
   local suffix = options.suffix or ("-" .. options.id)
   local areaScale = options.areaScale
   local newName = baseName .. suffix
@@ -54,3 +54,4 @@ function mutateTree(options, baseName, tree)
 
   tree_growth.defineTreeUpgrades(options, baseName, tree)
 end
+return mutateTree
