@@ -1,6 +1,5 @@
 require "util/entities"
 local mutateTree = require "util/tree"
-require "config"
 
 -- @param options a tree entity option table
 -- @param an old tree
@@ -25,4 +24,5 @@ local function createTreeEntityHierarchyForTree(configuration, oldTree)
     end
   end
 end
+
 return createTreeEntityHierarchyForTree

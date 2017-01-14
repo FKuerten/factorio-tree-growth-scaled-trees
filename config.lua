@@ -1,5 +1,3 @@
-require "tree-growth-lib/constants"
-
 local configuration = {}
 configuration.particles = {
   {
