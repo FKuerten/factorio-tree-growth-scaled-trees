@@ -64,7 +64,3 @@ configuration.treeEntities = {
     },
   },
 }
-
-configuration.groups = { 
-  seed = "tree-growth-seeds",
-}
