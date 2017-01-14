@@ -25,5 +25,4 @@ local function createTreeEntityHierarchyForTree(configuration, oldTree)
     end
   end
 end
-
 return createTreeEntityHierarchyForTree
