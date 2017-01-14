@@ -37,8 +37,8 @@ local function mutateTree(options, baseName, tree)
   if areaScale ~= 1 then
     tree.emissions_per_tick = tree.emissions_per_tick * areaScale
     tree.max_health = round(tree.max_health * areaScale)
-    tree.collision_box = scaledBox(tree.collision_box, sqrt(areaScale))
-    tree.selection_box = scaledBox(tree.selection_box, sqrt(areaScale))
+    --tree.collision_box = scaledBox(tree.collision_box, sqrt(areaScale))
+    --tree.selection_box = scaledBox(tree.selection_box, sqrt(areaScale))
     if tree.drawing_box then
       tree.drawing_box = scaledBox(tree.drawing_box, sqrt(areaScale))
     end
