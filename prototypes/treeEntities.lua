@@ -22,7 +22,13 @@ local function createTreeEntityHierarchyForTree(configuration, oldTree)
     for _, v in pairs(options.next) do
       tree_growth.core.registerUpgrade(newName, baseName .. v.suffix, v.probability, v.minDelay, v.maxDelay)
     end
+    
+    if options.first then
+      tree_growth.core.registerOffspring(baseName, newName)
+    end
   end
+  
+  
 end
 
 return createTreeEntityHierarchyForTree
