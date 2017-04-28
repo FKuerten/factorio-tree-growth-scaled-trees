@@ -1,13 +1,13 @@
 {
   "name": "tree-growth-scaled-trees",
   "version": "1.0.0",
-  "factorio_version": "0.14",
+  "factorio_version": "0.15",
   "title": "Tree growth -- Scaled trees.",
   "author": "Graveeater",
   "contact": "Graveeater on steam",
   "description": "Provides some scaled versions of normal trees.",
   "dependencies":
-    [ "base >= 0.14"
+    [ "base >= 0.15.3"
     , "tree-growth-core >= 1.0.0", "tree-growth-core < 2.0.0"
     , "?alien-biomes"
     ]
