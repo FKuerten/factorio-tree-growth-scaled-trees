@@ -20,11 +20,11 @@ local function createTreeEntityHierarchyForTree(configuration, oldTree)
     local suffix = options.suffix or ("-" .. options.id)
     local newName = baseName .. suffix
     for _, v in pairs(options.next) do
-      tree_growth.core.registerUpgrade(newName, baseName .. v.suffix, v.probability, v.minDelay, v.maxDelay)
+      tree_growth.core.registerUpgrade{base = newName, upgrade = baseName .. v.suffix, probability = v.probability, minDelay = v.minDelay, maxDelay = v.maxDelay}
     end
     
     if options.first then
-      tree_growth.core.registerOffspring(baseName, newName)
+      tree_growth.core.registerOffspring{parent = baseName, sapling = newName}
     end
   end
   
