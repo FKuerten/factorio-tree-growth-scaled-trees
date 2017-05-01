@@ -17,6 +17,10 @@ for _, oldTree in pairs(oldTrees) do
   if oldTree.subgroup ~= "trees" then
     skip = true
   end
+  
+  if oldTree.name:find("dead") or oldTree.name:find("dry") then
+    skip = true
+  end
 
   if not skip then
     createSaplingItemFromTree(oldTree)
