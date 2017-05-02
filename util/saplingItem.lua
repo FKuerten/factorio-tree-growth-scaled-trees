@@ -8,7 +8,7 @@ local createSaplingItemFromTree = function(tree)
     subgroup = tree_growth.core.groups.sapling,
     order = tree.order,
     place_result = name,
-    fuel_value = "1MJ", -- todo
+    --fuel_value = "1MJ", -- todo
     stack_size = 50,
   }
   data:extend({saplingItem})
