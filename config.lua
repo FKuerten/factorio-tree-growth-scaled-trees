@@ -37,7 +37,7 @@ configuration.treeEntities = {
     id = "tiny",
     suffix = "-tiny",
     particleSuffix = "-tiny",
-    areaScale = 0.1,
+    areaScale = 0.3,
     next = {
       {
         suffix = "-large",
@@ -51,7 +51,7 @@ configuration.treeEntities = {
     id = "large",
     suffix = "-large",
     particleSuffix = "",
-    areaScale = 1.0,
+    areaScale = 0.6,
     next = {
       {
         suffix = "",
