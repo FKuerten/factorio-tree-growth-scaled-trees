@@ -24,7 +24,7 @@ local function createTreeEntityHierarchyForTree(configuration, oldTree)
     end
     
     if options.first then
-      tree_growth.core.registerOffspring{parent = baseName, sapling = newName, variations="id"}
+      tree_growth.core.registerOffspring{parent = baseName, sapling = newName}
     end
   end
   
