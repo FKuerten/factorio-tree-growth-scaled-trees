@@ -28,8 +28,8 @@ configuration.treeEntities = {
       {
         suffix = "-tiny",
         probability = 1,
-        minDelay = 60,
-        maxDelay = 120,
+        minDelay = 9000,
+        maxDelay = 27000,
       },
     },
   },
@@ -42,8 +42,8 @@ configuration.treeEntities = {
       {
         suffix = "-large",
         probability = 1,
-        minDelay = 60,
-        maxDelay = 120,
+        minDelay = 9000,
+        maxDelay = 27000,
       },
     },
   },
@@ -56,8 +56,8 @@ configuration.treeEntities = {
       {
         suffix = "",
         probability = 1,
-        minDelay = 60,
-        maxDelay = 120,
+        minDelay = 9000,
+        maxDelay = 27000,
       },
     },
   },
