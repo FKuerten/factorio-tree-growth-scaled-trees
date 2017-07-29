@@ -30,7 +30,7 @@ local function mutateTree(options, baseName, tree)
     }
     tree.corpse = nil
     tree.remains_when_mined = nil
-  elseif tree.minable
+  elseif tree.minable then
     -- guessing no count means 1
     tree.minable.count = round((tree.minable.count or 1) * areaScale)
   end
