@@ -5,7 +5,6 @@ local createSaplingItemFromTree = function(tree)
     name = name,
     icon = tree.icon,
     icon_size = tree.icon_size,
-    flags = {"goes-to-main-inventory"},
     subgroup = tree_growth.core.groups.sapling,
     order = tree.order,
     place_result = name,
