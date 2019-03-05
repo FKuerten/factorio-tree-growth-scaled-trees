@@ -13,6 +13,7 @@ scaledBox = function(oldBox, linScale)
   return newBox
 end
 
+--deprecated
 scaledPicture = function(oldPic, scale)
   local linScale = sqrt(scale)
   local newPic = table.deepcopy(oldPic)
@@ -21,6 +22,16 @@ scaledPicture = function(oldPic, scale)
   end
   newPic.scale = linScale
   return newPic
+end
+
+scaledSprite = function(oldSprite, areaScale)
+  local lenScale = sqrt(areaScale)
+  local newSprite = table.deepcopy(oldSprite)
+  if oldSprite.shift then
+    newSprite.shift = { oldSprite.shift[1] * lenScale, oldSprite.shift[2] * lenScale}
+  end
+  newSprite.scale = lenScale
+  return newSprite
 end
 
 scaledAnimation = function(oldAnimation, areaScale)
@@ -63,7 +74,7 @@ end
 scaledSpriteVariations = function(oldSpriteVariations, areaScale)
   local newSpriteVariations = {}
   for i, oldSprite in ipairs(oldSpriteVariations) do
-    newSpriteVariations[i] = scaledPicture(oldSprite, areaScale)
+    newSpriteVariations[i] = scaledSprite(oldSprite, areaScale)
   end
   return newSpriteVariations
 end
