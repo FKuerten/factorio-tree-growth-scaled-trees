@@ -23,17 +23,17 @@ scaledPicture = function(oldPic, scale)
   return newPic
 end
 
-scaledCreateParticle = function(oldPic, suffix, scale)
-  local linScale = sqrt(scale)
-  local type = oldPic.type
-  local newPic = table.deepcopy(oldPic)
-  newPic.entity_name = oldPic.entity_name .. suffix
-  newPic.offset_deviation = scaledBox(oldPic.offset_deviation, linScale)
-  newPic.initial_height = oldPic.initial_height * linScale
-  newPic.initial_height_deviation = oldPic.initial_height_deviation * linScale
-  newPic.speed_from_center = oldPic.speed_from_center * linScale
-  newPic.scale = linScale
-  return newPic
+scaledCreateParticleTriggerEffectItem = function(oldCreateParticleTriggerEffectItem, suffix, areaScale)
+  local lenScale = sqrt(areaScale)
+  local newCreateParticleTriggerEffectItem = table.deepcopy(oldCreateParticleTriggerEffectItem)
+  for k, v in pairs({'initial_height', 'initial_height_deviation', 'initial_vertical_speed', 'initial_vertical_speed', 'speed_from_center', 'speed_from_center_deviation'}) do
+    if oldCreateParticleTriggerEffectItem[k] then
+      newCreateParticleTriggerEffectItem[k] = v * lenScale
+    end
+  end
+  newCreateParticleTriggerEffectItem.entity_name = oldCreateParticleTriggerEffectItem.entity_name .. suffix
+  newCreateParticleTriggerEffectItem.offset_deviation = scaledBox(oldCreateParticleTriggerEffectItem.offset_deviation, lenScale)
+  return newCreateParticleTriggerEffectItem
 end
 
 scaledPictures = function(oldPictures, scale)
@@ -53,7 +53,7 @@ scaledTreePrototypeVariations = function(oldTreePrototypeVariations, suffix, are
       if not type then
         newTreePrototypeVariation[k] = scaledPicture(oldPic, areaScale)
       elseif type == "create-particle" then
-        newTreePrototypeVariation[k] = scaledCreateParticle(oldPic, suffix, areaScale)
+        newTreePrototypeVariation[k] = scaledCreateParticleTriggerEffectItem(oldPic, suffix, areaScale)
       end
     end
     newTreePrototypeVariations[i] = newTreePrototypeVariation
