@@ -19,7 +19,7 @@ scaledSprite = function(oldSprite, areaScale)
   if oldSprite.shift then
     newSprite.shift = { oldSprite.shift[1] * lenScale, oldSprite.shift[2] * lenScale}
   end
-  newSprite.scale = lenScale
+  newSprite.scale =  (oldSprite.scale or 1) * lenScale
 
   if oldSprite.hr_version then
     newSprite.hr_version = scaledSprite(oldSprite.hr_version, areaScale)
@@ -34,7 +34,7 @@ scaledAnimation = function(oldAnimation, areaScale)
   if oldAnimation.shift then
     newAnimation.shift = { oldAnimation.shift[1] * lenScale, oldAnimation.shift[2] * lenScale}
   end
-  newAnimation.scale = lenScale
+  newAnimation.scale = (oldAnimation.scale or 1) * lenScale
 
   if oldAnimation.hr_version then
     newAnimation.hr_version = scaledAnimation(oldAnimation.hr_version, areaScale)
