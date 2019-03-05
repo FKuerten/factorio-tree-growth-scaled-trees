@@ -23,6 +23,16 @@ scaledPicture = function(oldPic, scale)
   return newPic
 end
 
+scaledAnimation = function(oldAnimation, areaScale)
+  local lenScale = sqrt(areaScale)
+  local newAnimation = table.deepcopy(oldAnimation)
+  if oldAnimation.shift then
+    newAnimation.shift = { oldAnimation.shift[1] * lenScale, oldAnimation.shift[2] * lenScale}
+  end
+  newAnimation.scale = lenScale
+  return newAnimation
+end
+
 scaledCreateParticleTriggerEffectItem = function(oldCreateParticleTriggerEffectItem, suffix, areaScale)
   local lenScale = sqrt(areaScale)
   local newCreateParticleTriggerEffectItem = table.deepcopy(oldCreateParticleTriggerEffectItem)
@@ -51,7 +61,7 @@ scaledTreePrototypeVariations = function(oldTreePrototypeVariations, suffix, are
     for k, oldPic in pairs(oldTreePrototypeVariation) do
       local type = oldPic.type
       if not type then
-        newTreePrototypeVariation[k] = scaledPicture(oldPic, areaScale)
+        newTreePrototypeVariation[k] = scaledAnimation(oldPic, areaScale)
       elseif type == "create-particle" then
         newTreePrototypeVariation[k] = scaledCreateParticleTriggerEffectItem(oldPic, suffix, areaScale)
       end
