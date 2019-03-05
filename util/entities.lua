@@ -100,3 +100,12 @@ scaledTreePrototypeVariations = function(oldTreePrototypeVariations, suffix, are
   end
   return newTreePrototypeVariations
 end
+
+-- We need smaller particles for smaller trees
+function scaleParticle(oldParticle, suffix, areaScale)
+  local newParticle = table.deepcopy(oldParticle)
+  newParticle.name = oldParticle.name .. suffix
+  newParticle.pictures = scaledPictures(oldParticle.pictures, areaScale)
+  newParticle.shadows = scaledPictures(oldParticle.shadows, areaScale)
+  return newParticle
+end

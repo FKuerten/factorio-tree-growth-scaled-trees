@@ -1,11 +1,3 @@
--- We need smaller particles for smaller trees
-local function scaleParticle(oldParticle, suffix, areaScale)
-  local newParticle = table.deepcopy(oldParticle)
-  newParticle.name = oldParticle.name .. suffix
-  newParticle.pictures = scaledPictures(oldParticle.pictures, areaScale)
-  newParticle.shadows = scaledPictures(oldParticle.shadows, areaScale)
-  return newParticle
-end
 
 local function createParticles(suffix, areaScale)
   data:extend({
