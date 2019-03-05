@@ -30,6 +30,11 @@ scaledAnimation = function(oldAnimation, areaScale)
     newAnimation.shift = { oldAnimation.shift[1] * lenScale, oldAnimation.shift[2] * lenScale}
   end
   newAnimation.scale = lenScale
+
+  if oldAnimation.hr_version then
+    newAnimation.hr_version = scaledAnimation(oldAnimation.hr_version, areaScale)
+  end
+
   return newAnimation
 end
 
