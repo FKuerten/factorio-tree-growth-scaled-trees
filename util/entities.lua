@@ -13,17 +13,6 @@ scaledBox = function(oldBox, linScale)
   return newBox
 end
 
---deprecated
-scaledPicture = function(oldPic, scale)
-  local linScale = sqrt(scale)
-  local newPic = table.deepcopy(oldPic)
-  if oldPic.shift then
-    newPic.shift = { oldPic.shift[1] * linScale, oldPic.shift[2] * linScale}
-  end
-  newPic.scale = linScale
-  return newPic
-end
-
 scaledSprite = function(oldSprite, areaScale)
   local lenScale = sqrt(areaScale)
   local newSprite = table.deepcopy(oldSprite)
@@ -67,13 +56,13 @@ scaledCreateParticleTriggerEffectItem = function(oldCreateParticleTriggerEffectI
   return newCreateParticleTriggerEffectItem
 end
 
---deprecated
-scaledPictures = function(oldPictures, scale)
-  local pictures = {}
-  for i, oldPic in ipairs(oldPictures) do
-    pictures[i] = scaledPicture(oldPic, scale)
+-- the "sheet" case is not supported
+scaledAnimationVariations = function(oldAnimationVariations, areaScale)
+  local newAnimationVariations = {}
+  for i, oldAnimation in ipairs(oldAnimationVariations) do
+    newAnimationVariations[i] = scaledAnimation(oldAnimation, areaScale)
   end
-  return pictures
+  return newAnimationVariations
 end
 
 scaledSpriteVariations = function(oldSpriteVariations, areaScale)
@@ -105,7 +94,7 @@ end
 function scaledParticle(oldParticle, suffix, areaScale)
   local newParticle = table.deepcopy(oldParticle)
   newParticle.name = oldParticle.name .. suffix
-  newParticle.pictures = scaledPictures(oldParticle.pictures, areaScale)
-  newParticle.shadows = scaledPictures(oldParticle.shadows, areaScale)
+  newParticle.pictures = scaledAnimationVariations(oldParticle.pictures, areaScale)
+  newParticle.shadows = scaledAnimationVariations(oldParticle.shadows, areaScale)
   return newParticle
 end
