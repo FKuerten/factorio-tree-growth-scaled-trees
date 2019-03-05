@@ -31,6 +31,11 @@ scaledSprite = function(oldSprite, areaScale)
     newSprite.shift = { oldSprite.shift[1] * lenScale, oldSprite.shift[2] * lenScale}
   end
   newSprite.scale = lenScale
+
+  if oldSprite.hr_version then
+    newSprite.hr_version = scaledSprite(oldSprite.hr_version, areaScale)
+  end
+
   return newSprite
 end
 
