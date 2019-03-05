@@ -51,12 +51,21 @@ scaledCreateParticleTriggerEffectItem = function(oldCreateParticleTriggerEffectI
   return newCreateParticleTriggerEffectItem
 end
 
+--deprecated
 scaledPictures = function(oldPictures, scale)
   local pictures = {}
   for i, oldPic in ipairs(oldPictures) do
     pictures[i] = scaledPicture(oldPic, scale)
   end
   return pictures
+end
+
+scaledSpriteVariations = function(oldSpriteVariations, areaScale)
+  local newSpriteVariations = {}
+  for i, oldSprite in ipairs(oldSpriteVariations) do
+    newSpriteVariations[i] = scaledPicture(oldSprite, areaScale)
+  end
+  return newSpriteVariations
 end
 
 scaledTreePrototypeVariations = function(oldTreePrototypeVariations, suffix, areaScale)
