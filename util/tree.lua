@@ -47,7 +47,7 @@ local function mutateTree(options, baseName, tree)
       tree.pictures = scaledPictures(tree.pictures, areaScale)
     end
     if tree.variations then
-      tree.variations = scaledVariations(tree.variations, options.particleSuffix or "", areaScale)
+      tree.variations = scaledTreePrototypeVariations(tree.variations, options.particleSuffix or "", areaScale)
     end
   end
 end

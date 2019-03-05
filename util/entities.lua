@@ -44,19 +44,19 @@ scaledPictures = function(oldPictures, scale)
   return pictures
 end
 
-scaledVariations = function(oldVariations, suffix, scale)
-  local newVariations = {}
-  for i, oldVariation in ipairs(oldVariations) do
-    local newVariation = {}
-    for k, oldPic in pairs(oldVariation) do
+scaledTreePrototypeVariations = function(oldTreePrototypeVariations, suffix, areaScale)
+  local newTreePrototypeVariations = {}
+  for i, oldTreePrototypeVariation in ipairs(oldTreePrototypeVariations) do
+    local newTreePrototypeVariation = {}
+    for k, oldPic in pairs(oldTreePrototypeVariation) do
       local type = oldPic.type
       if not type then
-        newVariation[k] = scaledPicture(oldPic, scale)
+        newTreePrototypeVariation[k] = scaledPicture(oldPic, areaScale)
       elseif type == "create-particle" then
-        newVariation[k] = scaledCreateParticle(oldPic, suffix, scale)
+        newTreePrototypeVariation[k] = scaledCreateParticle(oldPic, suffix, areaScale)
       end
     end
-    newVariations[i] = newVariation
+    newTreePrototypeVariations[i] = newTreePrototypeVariation
   end
-  return newVariations
+  return newTreePrototypeVariations
 end
