@@ -1,6 +1,6 @@
 {
   "name": "tree-growth-scaled-trees",
-  "version": "2.3.3",
+  "version": "2.4.0",
   "factorio_version": "0.17",
   "title": "Tree growth: Scaled trees.",
   "author": "Graveeater",
@@ -8,7 +8,7 @@
   "description": "Provides some scaled versions of normal trees.",
   "dependencies":
     [ "base >= 0.17.4"
-    , "tree-growth-core >= 2.2.0", "tree-growth-core < 3.0.0"
+    , "tree-growth-core >= 2.3.0", "tree-growth-core < 3.0.0"
     , "?alien-biomes"
     , "?IndustrialRevolution"
     ]

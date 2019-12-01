@@ -16,13 +16,17 @@ if mods['IndustrialRevolution'] then
     local baseName = 'tree-04'
     local newTree = table.deepcopy(data.raw.tree[baseName])
     mutateTree(configuration.saplingDefinition, baseName, newTree)
+    newTree.minable.result = "wood-sapling"
     data:extend({newTree})
+    data.raw.item[newTree.minable.result].place_result = newTree.name
   end
   do
     local baseName = 'deadlock-rubber-tree'
     local newTree = table.deepcopy(data.raw.tree[baseName])
     mutateTree(configuration.saplingDefinition, baseName, newTree)
+    newTree.minable.result = "rubber-sapling"
     data:extend({newTree})
+    data.raw.item[newTree.minable.result].place_result = newTree.name
   end
 end
 
@@ -35,7 +39,8 @@ for _, oldTree in pairs(oldTrees) do
     skip = true
   end
   
-  if oldTree.name:find("dead") or oldTree.name:find("dry") then
+  local isDeadTree = oldTree.name:find("dead") and not oldTree.name:find("deadlock")
+  if isDeadTree or oldTree.name:find("dry") then
     skip = true
   end
 
@@ -43,8 +48,10 @@ for _, oldTree in pairs(oldTrees) do
     if mods['IndustrialRevolution'] then
       createTreeEntityHierarchyForTree(configuration.treeEntities, oldTree)
       for _, v in pairs(configuration.saplingDefinition.next) do
-        local saplingEntityName = (oldTree.name == "deadlock-rubber-tree") and "deadlock-rubber-tree-sapling" or "tree-04-sapling"
-        tree_growth.core.registerUpgrade{base = saplingEntityName, upgrade = oldTree.name .. v.suffix, probability = v.probability, minDelay = v.minDelay, maxDelay = v.maxDelay, variations="id"}
+        local baseName = oldTree.name
+        local saplingEntityName = (baseName == "deadlock-rubber-tree") and "deadlock-rubber-tree-sapling" or "tree-04-sapling"
+        tree_growth.core.registerUpgrade{base = saplingEntityName, upgrade = baseName .. v.suffix, probability = v.probability, minDelay = v.minDelay, maxDelay = v.maxDelay, variations="id"}
+        tree_growth.core.registerOffspring{parent = baseName, sapling = saplingEntityName}
       end
     else
       createSaplingItemFromTree(oldTree)
