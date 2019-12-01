@@ -10,5 +10,6 @@
     [ "base >= 0.17.4"
     , "tree-growth-core >= 2.2.0", "tree-growth-core < 3.0.0"
     , "?alien-biomes"
+    , "?IndustrialRevolution"
     ]
 }

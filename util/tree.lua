@@ -2,6 +2,7 @@ local sqrt = math.sqrt
 local round = function(x) return math.floor(x+0.5) end
 
 local function mutateTree(options, baseName, tree)
+  assert(options)
   local suffix = options.suffix or ("-" .. options.id)
   local areaScale = options.areaScale
   local newName = baseName .. suffix
